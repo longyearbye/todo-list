@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <div class="list">
+            <textarea id="words" 
+                rows="2" cols="45"></textarea>
+        <button onclick="addTodo()">Add task</button>
+                <ul id="todo-list">
+                    <li class="checked"></li>
+                </ul>
+        </div>
+    </div>
+    
+
+<script>
+        let todo = document.getElementById('words'); 
+        let container = document.getElementById('todo-list');
+        let btn = document.getElementById('task-btn')
+        
+       function addTodo() {
+        if (todo.value === '') {
+            alert('you must write something!') 
+        }
+            else {
+                let li = document.createElement('li')
+                li.innerHTML = todo.value; 
+                container.appendChild(li); 
+                let span = document.createElement('span'); 
+                span.innerHTML = '\u00d7'; 
+                li.appendChild(span); 
+            }
+        
+       }
+
+       container.addEventListener('click', (e) =>{
+            if(e.target.tagName === 'LI') {
+                e.target.classList.toggle('checked'); 
+
+            } else if(e.target.tagName === "SPAN" ){
+                e.target.parentElement.remove(); 
+            }
+       })
+        
+</script>
+</body>
+</html>
